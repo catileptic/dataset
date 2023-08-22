@@ -54,7 +54,7 @@ class Database(object):
                     schema = schema_qs.pop()
 
         self.schema = schema
-        self.engine = create_engine(url, **engine_kwargs)
+        self.engine = create_engine(url, future=True, **engine_kwargs)
         self.is_postgres = self.engine.dialect.name == "postgresql"
         self.is_sqlite = self.engine.dialect.name == "sqlite"
         if on_connect_statements is None:
